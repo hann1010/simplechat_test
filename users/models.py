@@ -10,6 +10,7 @@ class Profile(models.Model):
     call = models.CharField(max_length=200, blank=True)
     qth = models.CharField(max_length=200, blank=True)
     address = models.CharField(max_length=200, blank=True)
+    email_public = models.EmailField(max_length=200, blank=True)
     town = models.CharField(max_length=200, blank=True)
     country = models.CharField(max_length=200, blank=True)
     user_level= models.PositiveIntegerField(default=10)
