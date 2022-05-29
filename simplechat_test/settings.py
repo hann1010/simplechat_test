@@ -120,10 +120,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+#STATIC_ROOT = '/home/SERVER_USER_NAME/simplechat_test/static'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+LOGIN_REDIRECT_URL = 'chat-home'
+LOGIN_URL = 'login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #develoment only
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
