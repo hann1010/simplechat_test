@@ -14,7 +14,7 @@ from django.urls import path
 
 
 urlpatterns = [
-    path('', views.home, name='chaat-home'),
+    path('', views.home, name='chat-home'),
     #path('latest/topics/', views.latest_topics, name='forum-latest_topics'),
     #path('latest/comments/', views.latest_comments, name='forum-latest_comments'),
     #path('latest/all/', views.latest_all, name='forum-latest_all'),
