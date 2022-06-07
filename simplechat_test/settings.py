@@ -116,6 +116,32 @@ USE_L10N = True
 
 USE_TZ = True
 
+CKEDITOR_CONFIGS = {
+        'default': {
+            'toolbar': 'Custom',
+            'width': '100%',
+            'toolbar_Custom': [
+                ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
+                ['Bold', 'Italic', 'Underline', 'TextColor', 'BGColor'],
+                ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                ['Textarea', 'RemoveFormat', 'Source', 'Link', 'Unlink', 'Image'],
+                ['Styles', 'Format', 'Font', 'FontSize'],
+                ['Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'],
+            ]
+        },
+        'chat_config': {
+            'toolbar': 'Custom',
+            'width': '100%',
+            'toolbar_Custom': [
+                ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
+                ['Bold', 'Italic', 'Underline', 'TextColor', 'BGColor'],
+                ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                ['Textarea', 'RemoveFormat', 'Source', 'Link', 'Unlink', 'Image'],
+                ['Styles', 'Format', 'Font', 'FontSize'],
+                ['Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'],
+            ]
+        }
+    }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
