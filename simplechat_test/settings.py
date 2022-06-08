@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
-    'chat.apps.ChatConfig'
+    'chat.apps.ChatConfig',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [
