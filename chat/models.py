@@ -12,4 +12,4 @@ class Chat_post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return  self.title + " / " + str(self.author)
+        return  self.post_type + " / " + str(self.author)
