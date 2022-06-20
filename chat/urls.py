@@ -15,7 +15,7 @@ from django.urls import path
 
 urlpatterns = [
     path('', views.home, name='chat-home'),
-    #path('latest/topics/', views.latest_topics, name='forum-latest_topics'),
+    path('chat/chat_view/', views.chat_view, name='chat-chat_view'),
     #path('latest/comments/', views.latest_comments, name='forum-latest_comments'),
     #path('latest/all/', views.latest_all, name='forum-latest_all'),
     #path('topic/new/', TopicCreateView.as_view(), name='forum_topic-create'),
