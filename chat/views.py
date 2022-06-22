@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Chat_post
 from django.contrib import messages
+#from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 #from django.contrib.auth.decorators import login_required
 from django.views.generic import (
@@ -21,7 +22,7 @@ def chat_view(request):
 
 class Chat_View(LoginRequiredMixin, CreateView):
     model = Chat_post
-    #success_url = reverse_lazy('forum-latest_topics')
+    #success_url = reverse_lazy('')
     fields = ['content']
 
     def get_context_data(self, **kwargs):
