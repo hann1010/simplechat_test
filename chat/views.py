@@ -16,10 +16,6 @@ def home(request):
     return render(request, 'chat/index.html')
 
 
-def chat_view(request):
-    return render(request, 'chat/chat_view.html')
-
-
 class Chat_View(LoginRequiredMixin, CreateView):
     model = Chat_post
     #success_url = reverse_lazy('')
@@ -32,9 +28,9 @@ class Chat_View(LoginRequiredMixin, CreateView):
 
     def get_template_names(self):
         if  self.request.user.profile.user_level > 3:
-            template_name = 'chat/index.html'
+            template_name = 'chat/chat_view.html'
         else:
-            template_name = 'chat/index.html'
+            template_name = 'chat/chat_view.html'
         return template_name
 
     def form_valid(self, form):
