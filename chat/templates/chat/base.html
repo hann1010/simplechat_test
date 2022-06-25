@@ -62,7 +62,7 @@
                   document.write("<li><a href='{% url 'chat-home' %}''>Home</a></li>");
               }
             </script>
-            <li><a href="#">Chat</a></li>
+            <li><a href="{% url 'chat-view' %}">Chat</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
