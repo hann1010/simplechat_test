@@ -23,6 +23,7 @@ class Chat_View(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["chat_context"] = Chat_post.objects.all().order_by('-date_posted')
         context["title"] = 'Chat'
         return context
 
