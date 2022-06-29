@@ -4,16 +4,14 @@
 	<div class="jumbotron">
 		<h1>{{ title }}</h1>
 		<p>Simplechat [chat_view]</p>
-		{% for post in chat_context %}
-		<div class="media">
-			<div class="media-left">
-				<div class="media-body">
-					<div class="well well-sm">
-						<p class="article-content">{{ post.content | safe }}</p>
-					</div>
-				</div>
-			</div>
+		<div class="well well-sm">
+			{{ form.media }}
+			{{ form.as_p }}
 		</div>
+		{% for post in chat_context %}
+			<div class="well well-sm">
+				<p class="article-content">{{ post.content | safe }}</p>
+			</div>
 		{% endfor %}
 	</div>
 </div>
