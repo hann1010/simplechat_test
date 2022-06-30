@@ -4,10 +4,20 @@
 	<div class="jumbotron">
 		<h1>{{ title }}</h1>
 		<p>Simplechat [chat_view]</p>
-		<div class="well well-sm">
-			{{ form.media }}
-			{{ form.as_p }}
-		</div>
+		<form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+				<div class="well well-sm">
+					{{ form.media }}
+					{{ form.as_p }}
+				</div>
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-success btn-sm mt-1 mb-1" type="submit">Submit</button>
+				<a class="btn btn-primary btn-sm mt-1 mb-1" href="javascript:history.go(-1)">Back</a>
+			</div>
+		</form>
+		<br>
 		{% for post in chat_context %}
 			<div class="well well-sm">
 				<p class="article-content">{{ post.content | safe }}</p>

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Chat_post
 from django.contrib import messages
 from django.core.paginator import Paginator
-#from django.urls import reverse_lazy
+from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 #from django.contrib.auth.decorators import login_required
 from django.views.generic import (
@@ -19,7 +19,7 @@ def home(request):
 
 class Chat_View(LoginRequiredMixin, CreateView):
     model = Chat_post
-    #success_url = reverse_lazy('')
+    success_url = reverse_lazy('chat-view')
     fields = ['content']
 
     def get_context_data(self, **kwargs):
