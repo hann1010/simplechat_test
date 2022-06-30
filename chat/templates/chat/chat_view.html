@@ -5,8 +5,8 @@
 		<h1>{{ title }}</h1>
 		<p>Simplechat [chat_view]</p>
 		<form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
+			{% csrf_token %}
+			<fieldset class="form-group">
 				<div class="well well-sm">
 					{{ form.media }}
 					{{ form.as_p }}
