@@ -20,9 +20,13 @@
 		</form>
 		<br>
 		{% for post in chat_context %}
+		{% if post.author == user %}
+			<p>[Users post]</p>
+		{% else %}
 			<div class="row">
 				<div class="col-sm-8" style="background-color:lavender;">{{ post.content | safe }}</div>
 			</div>
+		{% endif %}
 		<br> 
 		{% endfor %}
 	</div>
