@@ -23,7 +23,12 @@
 			{% if post.author == user %}
 				<div class="row">
 					<div class="col-sm-2"> </div>
-					<div class="col-sm-8" style="background-color:rgb(250, 230, 236);">{{ post.content | safe }}</div>
+					<div class="col-sm-8" style="background-color:rgb(250, 230, 236);">
+						<small class="text-muted" >{{ post.post_type }}</small>
+						<small class="text-muted">{{ post.date_posted|date:"H:i d, m, Y" }}</small>
+						<a class="mr-2" href="#">{{ post.author }}</a>
+						{{ post.content | safe }}
+					</div>
 				</div>
 				<br>
 			{% else %}

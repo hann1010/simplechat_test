@@ -42,6 +42,6 @@ class Chat_View(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        form.instance.post_type = 'Topic'
+        form.instance.post_type = 'Chat'
         messages.add_message(self.request, messages.INFO, 'Yours new message has been saved!')
         return super().form_valid(form)
