@@ -7,7 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 #from django.contrib.auth.decorators import login_required
 from django.views.generic import (
     #ListView,
-    #DetailView,
+    DetailView,
     CreateView,
     #UpdateView,
     #DeleteView,
@@ -45,3 +45,13 @@ class Chat_View(LoginRequiredMixin, CreateView):
         form.instance.post_type = 'Chat'
         messages.add_message(self.request, messages.INFO, 'Yours new message has been saved!')
         return super().form_valid(form)
+
+
+class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user information
+    model = Chat_post
+    template_name = 'chat/user_info.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'User info'
+        return context
