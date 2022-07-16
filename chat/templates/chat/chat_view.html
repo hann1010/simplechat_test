@@ -37,7 +37,7 @@
 					<div class="col-sm-8" style="background-color:rgb(230, 230, 250);">
 						<small class="text-muted" >{{ post.post_type }}</small>
 						<small class="text-muted">{{ post.date_posted|date:"H:i d, m, Y" }}</small>
-						<a class="mr-2" href="#">{{ post.author }}</a>
+						<a class="mr-2" href="{% url 'chat-user_info' post.id %}">{{ post.author }}</a>
 						{{ post.content | safe }}
 					</div>
 				</div>
