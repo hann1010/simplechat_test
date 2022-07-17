@@ -81,7 +81,7 @@ class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return super().form_valid(form)
 
     def test_func(self):
-        Forum_post = self.get_object()
+        Chat_post = self.get_object()
         if self.request.user == Chat_post.author:
             return True
         return False
