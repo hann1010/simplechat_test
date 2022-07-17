@@ -9,7 +9,7 @@ from django.views.generic import (
     #ListView,
     DetailView,
     CreateView,
-    #UpdateView,
+    UpdateView,
     #DeleteView,
 )
 
@@ -55,3 +55,33 @@ class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user inform
         context = super().get_context_data(**kwargs)
         context["title"] = 'User info'
         return context
+
+
+class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Chat_post
+    success_url = reverse_lazy('chat-view')
+    fields = ['content']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'edit chat'
+        return context
+
+    def get_template_names(self):
+        if  self.request.user.profile.user_level > 3:
+            template_name = 'chat/edit_chat.html'
+        else:
+            template_name = 'chat/edit_chat.html'
+        return template_name
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        info = 'chat has been updated!'
+        messages.add_message(self.request, messages.INFO, info)
+        return super().form_valid(form)
+
+    def test_func(self):
+        Forum_post = self.get_object()
+        if self.request.user == Forum_post.author:
+            return True
+        return False
