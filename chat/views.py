@@ -30,7 +30,8 @@ class Chat_View(LoginRequiredMixin, CreateView):
         page_number = self.request.GET.get('page')
         page_data = paginator.get_page(page_number)
         context["chat_context"] = page_data
-        context["title"] = 'Chat'
+        context["title"] = 'chat'
+        context["title_page"] = 'Chat'
         return context
 
     def get_template_names(self):
@@ -53,7 +54,8 @@ class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user inform
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = 'User info'
+        context["title"] = 'user info'
+        context["title_page"] = 'User info'
         return context
 
 
@@ -65,13 +67,14 @@ class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = 'edit chat'
+        context["title_page"] = 'Edit chat'
         return context
 
     def get_template_names(self):
         if  self.request.user.profile.user_level > 3:
-            template_name = 'chat/edit_chat.html'
+            template_name = 'chat/chat_edit.html'
         else:
-            template_name = 'chat/edit_chat.html'
+            template_name = 'chat/chat_edit.html'
         return template_name
 
     def form_valid(self, form):

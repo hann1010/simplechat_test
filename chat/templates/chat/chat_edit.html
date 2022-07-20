@@ -9,7 +9,7 @@
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Chat: {{ title}} </legend>
+                <h1>{{ title_page }}</h1>
                 {{ form.media }}
                 {{ form.as_p }}
             </fieldset>

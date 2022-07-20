@@ -2,8 +2,7 @@
 {% block content %}
 <div class="container">
 	<div class="jumbotron">
-		<h1>{{ title }}</h1>
-		<p>Simplechat [chat_view]</p>
+		<h1>{{ title_page }}</h1>
 		<form method="POST">
 			{% csrf_token %}
 			<fieldset class="form-group">
@@ -28,7 +27,7 @@
 						<small class="text-muted">{{ post.date_posted|date:"H:i d, m, Y" }}</small>
 						<a class="mr-2" href="{% url 'chat-user_info' post.id %}">{{ post.author }}</a>
 						{{ post.content | safe }}
-						<a class="mr-2" href="#">Update</a>
+						<a class="mr-2" href="{% url 'chat_update' post.id %}">Update</a>
 					</div>
 				</div>
 				<br>
