@@ -10,7 +10,7 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
-    #DeleteView,
+    DeleteView,
 )
 
 def home(request):
@@ -88,3 +88,20 @@ class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         if self.request.user == Chat_post.author:
             return True
         return False
+
+
+class ChatDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Chat_post
+    success_url = reverse_lazy('forum-latest_all')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'delete post'
+        context["title_page"] = 'Delete chat'
+        return context
+
+    def test_func(self):
+        Chat_post = self.get_object()
+        if self.request.user == Chat_post.author and self.request.user.profile.user_level > 4:
+            return True
+        return False 
