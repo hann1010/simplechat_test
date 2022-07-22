@@ -10,6 +10,7 @@
             {% csrf_token %}
             <fieldset class="form-group">
                 <h1>{{ title_page }}</h1>
+                <p>{{ object.author }} posted at: {{ object.date_posted|date:'H:i d, m, Y'  }}.</p>
                 {{ form.media }}
                 {{ form.as_p }}
             </fieldset>
