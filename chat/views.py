@@ -92,7 +92,7 @@ class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class ChatDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Chat_post
-    success_url = reverse_lazy('forum-latest_all')
+    success_url = reverse_lazy('chat-view')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

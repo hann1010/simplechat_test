@@ -7,7 +7,7 @@ from .views import (
     #TopicCreateView,
     #CommentCreateView,
     ChatUpdateView,
-    #PostDeleteView,
+    ChatDeleteView,
     UserDetailView
     
 )
@@ -23,7 +23,7 @@ urlpatterns = [
     #path('all/<int:pk>/open/', AllDetailView.as_view(), name='forum_open_one_post'),
     #path('all/<int:pk>/thread/', ThreadDetailView.as_view(), name='forum_thread'),
     path('chat/<int:pk>/update/', ChatUpdateView.as_view(), name='chat_update'),
-    #path('all/<int:pk>/delete/', PostDeleteView.as_view(), name='forum_all_delete'),
+    path('chat/<int:pk>/delete/', ChatDeleteView.as_view(), name='chat_delete'),
     path('chat/<int:pk>/user_info/', UserDetailView.as_view(), name='chat-user_info'),
     
 	
