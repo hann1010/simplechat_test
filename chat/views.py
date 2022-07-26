@@ -14,7 +14,11 @@ from django.views.generic import (
 )
 
 def home(request):
-    return render(request, 'chat/index.html')
+    dic_x = {
+            'title': 'home',
+            'title_page' : 'Home'
+        }
+    return render(request, 'chat/index.html', dic_x)
 
 
 class Chat_View(LoginRequiredMixin, CreateView):
