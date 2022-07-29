@@ -2,20 +2,13 @@
 {% block content %}
 <div class="container">
 	<div class="jumbotron">
-		<script>
-			window.setInterval('refresh()', 10000); 	
-			// Call a function every xxx milliseconds 
-			// Refresh or reload page.
-			function refresh() {
-				window .location.reload();
-			}
 		</script>
 		<h1>{{ title_page }}</h1>
 		<form method="POST">
 			{% csrf_token %}
 			<fieldset class="form-group">
 				<div class="well well-sm">
-					{{ form.media }}
+					{{ form.media }} 
 					{{ form.as_p }}
 				</div>
 			</fieldset>
