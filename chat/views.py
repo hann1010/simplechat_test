@@ -42,7 +42,7 @@ class Chat_View(LoginRequiredMixin, CreateView):
         if  self.request.user.profile.user_level > 3:
             template_name = 'chat/chat_view.html'
         else:
-            template_name = 'chat/chat_view.html'
+            template_name = 'chat/forbidden.html'
         return template_name
 
     def form_valid(self, form):
@@ -78,7 +78,7 @@ class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         if  self.request.user.profile.user_level > 3:
             template_name = 'chat/chat_edit.html'
         else:
-            template_name = 'chat/chat_edit.html'
+            template_name = 'chat/forbidden.html'
         return template_name
 
     def form_valid(self, form):
