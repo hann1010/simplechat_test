@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 #from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from django.views.generic import (
     #ListView,
     DetailView,
@@ -19,6 +20,16 @@ def home(request):
             'title_page' : 'Home'
         }
     return render(request, 'chat/index.html', dic_x)
+
+
+def jsonData(request): #Test
+    data = {
+        'name': 'Vitor',
+        'location': 'Finland',
+        'is_active': True,
+        'count': 28
+    }
+    return JsonResponse(data)
 
 
 class Chat_View(LoginRequiredMixin, CreateView):
