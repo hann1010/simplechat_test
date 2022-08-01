@@ -15,6 +15,7 @@ from .views import (
 
 urlpatterns = [
     path('', views.home, name='chat-home'),
+    path('chat/chat_json/', views.jsonChat, name='chat-json'),
     path('chat/chat-view/', Chat_View.as_view(), name='chat-view'),
     #path('latest/comments/', views.latest_comments, name='forum-latest_comments'),
     #path('latest/all/', views.latest_all, name='forum-latest_all'),

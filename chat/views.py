@@ -22,13 +22,13 @@ def home(request):
     return render(request, 'chat/index.html', dic_x)
 
 
-def jsonData(request): #Test
+def jsonChat(request): #Test
     data = {
         'name': 'Vitor',
         'location': 'Finland',
         'is_active': True,
         'count': 28
-    }
+        }
     return JsonResponse(data)
 
 
