@@ -23,13 +23,8 @@ def home(request):
 
 
 def jsonChat(request): #Test
-    data = {
-        'name': 'Vitor',
-        'location': 'Finland',
-        'is_active': True,
-        'count': 28
-        }
-    return JsonResponse(data)
+    data = Chat_post.objects.all().values()
+    return JsonResponse(list(data), safe=False)
 
 
 class Chat_View(LoginRequiredMixin, CreateView):
