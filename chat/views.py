@@ -24,7 +24,7 @@ def home(request):
 
 def jsonChat(request): #Test
     data = Chat_post.objects.all().values()
-    return JsonResponse(list(data), safe=False)
+    return JsonResponse({'foo' : list(data)}, safe=False)
 
 
 class Chat_View(LoginRequiredMixin, CreateView):
