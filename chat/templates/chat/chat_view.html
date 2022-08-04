@@ -11,10 +11,10 @@
       			url: "chat_json/",
        			data: {
 					csrfmiddlewaretoken: '{{ csrf_token }}'
-				   },
+					},
        			success: function(data) {
 					alert('Load was performed.'+data.chat_context);
-       				}
+					}
      			})
    			};
 		</script>
