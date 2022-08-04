@@ -4,6 +4,19 @@
 	<div class="jumbotron">
 		<button onclick="jsonChat()">Test jsonChat</button>
 		<script>
+			//Testing JsonResponse
+			function jsonChat() {
+     		$.ajax({
+       			method: "POST",
+      			url: "chat_json/",
+       			data: {
+					csrfmiddlewaretoken: '{{ csrf_token }}'
+				   },
+       			success: function(data) {
+					alert('Load was performed.'+data.chat_context);
+       				}
+     			})
+   			};
 		</script>
 		<h1>{{ title_page }}</h1>
 		<form method="POST">
