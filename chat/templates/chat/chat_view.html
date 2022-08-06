@@ -13,11 +13,19 @@
 					csrfmiddlewaretoken: '{{ csrf_token }}'
 					},
        			success: function(data) {
-					alert('Load was performed.'+data.chat_context);
+					alert(data['chat_context']);
+					
 					}
      			})
    			};
 		</script>
+		<script>
+			var aa = "Foo Hoo";
+			"{{ titlezz }}" =  aa; 
+		</script>
+		
+		{{ titlezz|safe  }}
+		
 		<h1>{{ title_page }}</h1>
 		<form method="POST">
 			{% csrf_token %}
