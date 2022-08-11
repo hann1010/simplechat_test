@@ -3,28 +3,25 @@
 <div class="container">
 	<div class="jumbotron">
 		<button onclick="jsonChat()">Test jsonChat</button>
+		<p id="test"></p>
 		<script>
 			//Testing JsonResponse
 			function jsonChat() {
      		$.ajax({
        			method: "POST",
       			url: "chat_json/",
+        		dataType: 'json',        
        			data: {
 					csrfmiddlewaretoken: '{{ csrf_token }}'
 					},
        			success: function(data) {
-					alert(data['chat_context']);
-					
+					var tmp = (data['chat_context']['3']['content']);
+					alert(tmp);
+					document.getElementById("test").innerHTML = tmp;
 					}
      			})
    			};
 		</script>
-		<script>
-			var aa = "Foo Hoo";
-			"{{ titlezz }}" =  aa; 
-		</script>
-		
-		{{ titlezz|safe  }}
 		
 		<h1>{{ title_page }}</h1>
 		<form method="POST">
