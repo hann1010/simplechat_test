@@ -8,13 +8,14 @@
 			//Testing JsonResponse
 			function jsonChat() {
 			$.ajax({
-				method: "POST",
-				url: "chat_json/",
+				method: 'POST',
+				url: 'chat_json/',
 				dataType: 'json',        
 				data: {
 					csrfmiddlewaretoken: '{{ csrf_token }}'
 					},
 				success: function(data) {
+					alert(data['chat_context']);
 					var tmp = (data['chat_context']['3']['content']);
 					alert(tmp);
 					document.getElementById("test").innerHTML = tmp;
