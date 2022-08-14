@@ -3,7 +3,6 @@
 <div class="container">
 	<div class="jumbotron">
 		<button onclick="jsonChat()">Test jsonChat</button>
-		<p id="test"></p>
 		<script>
 			//Testing JsonResponse
 			function jsonChat() {
@@ -17,8 +16,16 @@
 				success: function(data) {
 					alert(data['chat_context']);
 					var tmp = (data['chat_context']['3']['content']);
+					var tmp2 = (data['chat_context']['3']['date_posted']);
 					alert(tmp);
-					document.getElementById("test").innerHTML = tmp;
+					var d = new Date(tmp2).toJSON().slice(0,10).split('-').reverse().join(',');
+					var t = new Date(tmp2).toJSON().slice(11,19)
+					document.getElementById('test').innerHTML = "<small class='text-muted' >"
+						 + t + ". " + d + "</small>" +  tmp;
+					document.getElementById('test2').innerHTML = 'the end'; 
+					alert('{{ user }}');
+
+					
 					}
 				})
 			};
@@ -39,6 +46,11 @@
 				<a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'chat-view' %}">Reload</a>
 			</div>
 		</form>
+		<br>
+		<h3>JsonResponse test</h3>
+		<p id="test"></p>
+		<p id="test2"></p>
+		<h3>JsonResponse test end</h3>
 		<br>
 		{% for post in chat_context %}
 			{% if post.author == user %}
