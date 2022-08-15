@@ -13,17 +13,15 @@
 				data: {
 					csrfmiddlewaretoken: '{{ csrf_token }}'
 					},
-				success: function(data) {
-					alert(data['chat_context']);
-					var tmp = (data['chat_context']['3']['content']);
-					var tmp2 = (data['chat_context']['3']['date_posted']);
-					alert(tmp);
-					var d = new Date(tmp2).toJSON().slice(0,10).split('-').reverse().join(',');
-					var t = new Date(tmp2).toJSON().slice(11,19)
-					document.getElementById('test').innerHTML = "<small class='text-muted' >"
-						 + t + ". " + d + "</small>" +  tmp;
-					document.getElementById('test2').innerHTML = 'the end'; 
-					alert('{{ user }}');
+				success: function(response) {
+					var instance = response['chat_context'];
+					alert(instance);
+					var fields = instance[3]["content"];
+					alert(fields);
+					var fields = instance[3]["id"];
+					alert(fields);
+					
+					alert('{{ user.id }}');
 
 					
 					}
