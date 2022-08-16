@@ -24,6 +24,11 @@
 					alert(fields);
 					var fields = instance[3]["id"];
 					alert(fields);
+					$("#showdata tbody").prepend(
+                   	`
+					
+					`
+                	)
 					
 					alert('{{ user.id }}');
 
@@ -50,8 +55,11 @@
 		</form>
 		<br>
 		<h3>JsonResponse test</h3>
-		<p id="test"></p>
-		<p id="test2"></p>
+		<table class="table table-bordered" id="showdata">
+			<tbody>
+				test
+			</tbody>
+		</table>
 		<h3>JsonResponse test end</h3>
 		<br>
 		{% for post in chat_context %}
