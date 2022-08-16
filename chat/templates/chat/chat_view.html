@@ -16,6 +16,7 @@
 				success: function(response) {
 					var instance = response['chat_context'];
 					alert(instance);
+					alert(instance.length);
 					var fields = instance[3]["content"];
 					alert(fields);
 					var fields2 = instance[3];
