@@ -15,20 +15,19 @@
 					},
 				success: function(response) {
 					var instance = response['chat_context'];
-					alert(instance);
 					alert(instance.length);
-					var fields = instance[3]["content"];
-					alert(fields);
-					var fields2 = instance[3];
+					var fields = instance[3];
+					var fields2 = fields["content"];
 					alert(fields2);
-					var fields = fields2["id"];
-					alert(fields);
-					var fields = instance[3]["id"];
-					alert(fields);
+					var fields3 = fields["id"];
+					alert(fields3);
 					$("#showdata tbody").prepend(
 					`
-					
+					<div class="col-sm-12" style="background-color:rgb(250, 230, 236);">
+					${fields["content"]||""}
+					</div>
 					`
+					
 					)
 					
 					alert('{{ user.id }}');
@@ -58,7 +57,7 @@
 		<h3>JsonResponse test</h3>
 		<table class="table table-bordered" id="showdata">
 			<tbody>
-				test
+				
 			</tbody>
 		</table>
 		<h3>JsonResponse test end</h3>
