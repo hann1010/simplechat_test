@@ -17,6 +17,10 @@
 					var instance = response['chat_context'];
 					alert(instance.length);
 					var fields = instance[3];
+					var dateRaw = fields["date_posted"]; //Format Date and time
+					var tmp_date = new Date(dateRaw).toJSON().slice(0,10).split('-').reverse().join(',');
+					var tmp_time = new Date(dateRaw).toJSON().slice(11,19);
+					var dateTime =  tmp_time + " " + tmp_date;
 					var fields2 = fields["content"];
 					alert(fields2);
 					var fields3 = fields["author_id"];
@@ -25,6 +29,7 @@
 					`
 					<div class="col-sm-12" style="background-color:rgb(250, 230, 236);">
 					${fields["post_type"]||""}
+					${dateTime||""}
 					${fields["content"]||""}
 					</div>
 					`
