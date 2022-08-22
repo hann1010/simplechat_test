@@ -53,6 +53,7 @@ class Chat_View(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        form.instance.author_name = str(self.request.user)
         form.instance.post_type = 'Chat'
         messages.add_message(self.request, messages.INFO, 'Yours new message has been saved!')
         return super().form_valid(form)
@@ -89,6 +90,7 @@ class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        form.instance.author_name = str(self.request.user)
         info = 'Your chat has been updated!'
         messages.add_message(self.request, messages.INFO, info)
         return super().form_valid(form)
