@@ -27,16 +27,19 @@
 					alert(fields3);
 					$("#showdata tbody").prepend(
 					`
-					<div class="col-sm-12" style="background-color:rgb(250, 230, 236);">
+					<div class="col-sm-12" style="background-color:rgb(250, 249, 230);">
 					${fields["post_type"]||""}
 					${dateTime||""}
-					${fields["content"]||""}
+					${fields["author_name"]||""}
 					</div>
+					<div class="col-sm-12" style="background-color:rgb(250, 230, 236);">
+					${fields["content"]||""}
+					</div
 					`
 					
 					)
 					
-					alert('{{ user.id }}');
+					//alert('{{ user.id }}');
 
 					
 					}
@@ -72,7 +75,7 @@
 			{% if post.author == user %}
 				<div class="row">
 					<div class="col-sm-2"> </div>
-					<div class="col-sm-8" style="background-color:rgb(250, 230, 236);">
+					<div class="col-sm-8" style="background-color:rgb(246, 250, 230);">
 						<small class="text-muted" >{{ post.post_type }}</small>
 						<small class="text-muted">{{ post.date_posted|date:"H:i d, m, Y" }}</small>
 						<a class="mr-2" href="{% url 'chat-user_info' post.id %}">{{ post.author }}</a>
