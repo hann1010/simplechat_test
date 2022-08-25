@@ -15,34 +15,34 @@
 					},
 				success: function(response) {
 					var instance = response['chat_context'];
-					alert(instance.length);
-					var fields = instance[3];
-					var dateRaw = fields["date_posted"]; //Format Date and time
-					var tmp_date = new Date(dateRaw).toJSON().slice(0,10).split('-').reverse().join(',');
-					var tmp_time = new Date(dateRaw).toJSON().slice(11,19);
-					var dateTime =  tmp_time + " " + tmp_date;
-					var fields2 = fields["content"];
-					alert(fields2);
-					var fields3 = fields["author_id"];
-					alert(fields3);
-					$("#showdata tbody").prepend(
-						`
-							<div class="col-sm-12" style="background-color:rgb(250, 249, 230);">
-								${fields["post_type"]||""}
-								${dateTime||""}
-								<a class="mr-2" href="../${fields["author_id"]||""}/user_info/">
+					for (let i = 0; i < instance.length; i++) {
+						var fields = instance[i];
+						var dateRaw = fields["date_posted"]; //Format Date and time
+						var tmp_date = new Date(dateRaw).toJSON().slice(0,10).split('-').reverse().join(',');
+						var tmp_time = new Date(dateRaw).toJSON().slice(11,19);
+						var dateTime =  tmp_time + " " + tmp_date;
+						$("#showdata tbody").prepend(
+							`
+								<div class="col-sm-12" style="background-color:rgb(250, 249, 230);">
+									${fields["post_type"]||""}
+									${dateTime||""}
+									<a class="mr-2" href="../${fields["author_id"]||""}/user_info/">
 									${fields["author_name"]||""}</a>
-							</div>
-							<div class="col-sm-12" style="background-color:rgb(250, 230, 236);">
-								${fields["content"]||""}
-							</div>
-						`
-						)
+								</div>
+								<div class="col-sm-12" style="background-color:rgb(250, 230, 236);">
+									${fields["content"]||""}
+								</div>
+							`
+							)
 					
 					//alert('{{ user.id }}');
 
 					
-					}
+						}
+  				
+					} 
+
+
 				})
 			};
 		</script>
