@@ -79,39 +79,11 @@
 			</div>
 		</form>
 		<br>
-		<h3>JsonResponse test</h3>
 		<table class="table table-bordered" id="showdata">
 			<tbody>
 				
 			</tbody>
 		</table>
-		<h3>JsonResponse test end</h3>
-		<br>
-		{% for post in chat_context %}
-			{% if post.author == user %}
-				<div class="row">
-					<div class="col-sm-2"> </div>
-					<div class="col-sm-8" style="background-color:rgb(246, 250, 230);">
-						<small class="text-muted" >{{ post.post_type }}</small>
-						<small class="text-muted">{{ post.date_posted|date:"H:i d, m, Y" }}</small>
-						<a class="mr-2" href="{% url 'chat-user_info' post.id %}">{{ post.author }}</a>
-						{{ post.content | safe }}
-						<a class="mr-2" href="{% url 'chat_update' post.id %}">Update</a>
-					</div>
-				</div>
-				<br>
-			{% else %}
-				<div class="row">
-					<div class="col-sm-8" style="background-color:rgb(230, 230, 250);">
-						<small class="text-muted" >{{ post.post_type }}</small>
-						<small class="text-muted">{{ post.date_posted|date:"H:i d, m, Y" }}</small>
-						<a class="mr-2" href="{% url 'chat-user_info' post.id %}">{{ post.author }}</a>
-						{{ post.content | safe }}
-					</div>
-				</div>
-				<br>
-			{% endif %}
-		{% endfor %}
 	</div>
 </div>
 {% endblock content %}
