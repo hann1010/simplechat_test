@@ -15,6 +15,7 @@
 					},
 				success: function(response) {
 					var instance = response['chat_context'];
+					$('tbody').empty();
 					for (let i = 0; i < instance.length; i++) {
 						var fields = instance[i];
 						var dateRaw = fields["date_posted"]; //Format Date and time
