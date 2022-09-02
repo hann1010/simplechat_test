@@ -23,7 +23,7 @@ def home(request):
 
 
 def jsonChat(request): #Test
-    data = Chat_post.objects.all().values()
+    data = Chat_post.objects.all().values().order_by('-date_posted')
     return JsonResponse({'chat_context' : list(data)}, safe=False)
 
 
