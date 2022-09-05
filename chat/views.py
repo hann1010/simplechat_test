@@ -24,7 +24,9 @@ def home(request):
 
 def jsonChat(request): #Test
     data = Chat_post.objects.all().values().order_by('-date_posted')
-    return JsonResponse({'chat_context' : list(data)}, safe=False)
+    paginator = Paginator(data, 5)
+    page_data = paginator.get_page(1)
+    return JsonResponse({'chat_context' : list(page_data)}, safe=False)
 
 
 class Chat_View(LoginRequiredMixin, CreateView):
