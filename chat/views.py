@@ -18,7 +18,7 @@ def home(request):
     dic_x = {
             'title': 'home',
             'title_page' : 'Home'
-        }
+    }
     return render(request, 'chat/index.html', dic_x)
 
 
@@ -26,7 +26,11 @@ def jsonChat(request): #Test
     data = Chat_post.objects.all().values().order_by('-date_posted')
     paginator = Paginator(data, 5)
     page_data = paginator.get_page(1)
-    return JsonResponse({'chat_context' : list(page_data)}, safe=False)
+    json_page = {
+        'chat_context' : list(page_data),
+        'num_of_pages' : 55 #test
+    }
+    return JsonResponse( json_page, safe=False)
 
 
 class Chat_View(LoginRequiredMixin, CreateView):
