@@ -16,19 +16,20 @@ from django.views.generic import (
 
 def home(request):
     dic_x = {
-            'title': 'home',
-            'title_page' : 'Home'
+        'title': 'home',
+        'title_page' : 'Home'
     }
     return render(request, 'chat/index.html', dic_x)
 
 
 def jsonChat(request): #Test
     data = Chat_post.objects.all().values().order_by('-date_posted')
-    paginator = Paginator(data, 5)
-    page_data = paginator.get_page(1)
+    paginator = Paginator(data, 4)
+    page_data = paginator.get_page(2)
+    num_of_pages = paginator.num_pages
     json_page = {
         'chat_context' : list(page_data),
-        'num_of_pages' : 55 #test
+        'num_of_pages' : num_of_pages
     }
     return JsonResponse( json_page, safe=False)
 
