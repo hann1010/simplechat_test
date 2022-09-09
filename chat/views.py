@@ -99,6 +99,7 @@ class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         form.instance.author_name = str(self.request.user)
+        form.instance.post_type = 'Chat[edit]'
         info = 'Your chat has been updated!'
         messages.add_message(self.request, messages.INFO, info)
         return super().form_valid(form)
