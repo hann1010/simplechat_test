@@ -24,8 +24,9 @@ def home(request):
 
 def jsonChat(request): #Test
     data = Chat_post.objects.all().values().order_by('-date_posted')
-    paginator = Paginator(data, 5)
-    page_data = paginator.get_page(1)
+    paginator = Paginator(data, 3)
+    page_number = request.POST.get('page')
+    page_data = paginator.get_page(page_number)
     json_page = {
         'chat_context' : list(page_data),
         'num_of_pages' : paginator.num_pages,
