@@ -10,7 +10,8 @@
 				url: 'chat_json/',
 				dataType: 'json',        
 				data: {
-					csrfmiddlewaretoken: '{{ csrf_token }}'
+					csrfmiddlewaretoken : '{{ csrf_token }}',
+					page : 2 //test
 					},
 				success: function(response) {
 					var instance = response['chat_context'];
