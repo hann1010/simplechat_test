@@ -4,16 +4,16 @@
 	<div class="jumbotron">
 		<script>
 			setTimeout(jsonChat, 500, 2);
-			var selected_page;
-			function jsonChat(sel_page) {
-			selected_page = sel_page;
+			var sel_page;
+			function jsonChat(selected_page) {
+			sel_page = selected_page;
 			$.ajax({
 				method: 'POST',
 				url: 'chat_json/',
 				dataType: 'json',        
 				data: {
 					csrfmiddlewaretoken : '{{ csrf_token }}',
-					page : sel_page
+					page : selected_page
 					},
 				success: function(response) {
 					var instance = response['chat_context'];
@@ -88,7 +88,7 @@
 			<div class="form-group">
 				<button class="btn btn-success btn-sm mt-1 mb-1" type="submit">Submit</button>
 				<a class="btn btn-primary btn-sm mt-1 mb-1" href="javascript:history.go(-1)">Back</a>
-				<a class="btn btn-primary btn-sm mt-1 mb-1" onclick="jsonChat(sel_page = selected_page+1)">Reload</a>
+				<a class="btn btn-primary btn-sm mt-1 mb-1" onclick="jsonChat(1)">Reload</a>
 			</div>
 		</form>
 		<br>
