@@ -26,8 +26,10 @@
 									Page ${response['page_number']||""} of 
 										${response['num_of_pages']||""}
 								</span>
-								<a href="next-page" onclick="jsonChat(${response['page_number']||""}+1);return false;" >next</a>
-								<a href="last-page" onclick="jsonChat(${response['num_of_pages']||""});return false;" >last &raquo;</a>
+								<a href="next-page" onclick="jsonChat(${response['page_number']||""}+1);
+									return false;" >next</a>
+								<a href="last-page" onclick="jsonChat(${response['num_of_pages']||""});
+									return false;" >last &raquo;</a>
 							</span>
 							`
 						)
