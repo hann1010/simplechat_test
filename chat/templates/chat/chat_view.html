@@ -20,35 +20,35 @@
 					$('tbody').empty();
 					if (response['page_number'] <= 1){
 							$("#pagination tbody").prepend(
-							`
-							<span class="step-links">
-								<span class="current">
-									Page ${response['page_number']||""} of 
-										${response['num_of_pages']||""}
+								`
+								<span class="step-links">
+									<span class="current">
+										Page ${response['page_number']||""} of 
+											${response['num_of_pages']||""}
+									</span>
+									<a href="next-page" onclick="jsonChat(${response['page_number']||""}+1);
+										return false;" >next</a>
+									<a href="last-page" onclick="jsonChat(${response['num_of_pages']||""});
+										return false;" >last &raquo;</a>
 								</span>
-								<a href="next-page" onclick="jsonChat(${response['page_number']||""}+1);
-									return false;" >next</a>
-								<a href="last-page" onclick="jsonChat(${response['num_of_pages']||""});
-									return false;" >last &raquo;</a>
-							</span>
-							`
-						)
-					}else if (response['page_number'] >= response['num_of_pages']){
-						$("#pagination tbody").prepend(
-							`
-							<span class="step-links">
-								<a href="first-page" onclick="jsonChat(1);
-									return false;" >&laquo; first</a>
-								<a href="previous-page" onclick="jsonChat(${response['page_number']||""}-1);
-									return false;" >previous</a>
-								<span class="current">
-									Page ${response['page_number']||""} of 
-										${response['num_of_pages']||""}
+								`
+							)
+						}else if (response['page_number'] >= response['num_of_pages']){
+							$("#pagination tbody").prepend(
+								`
+								<span class="step-links">
+									<a href="first-page" onclick="jsonChat(1);
+										return false;" >&laquo; first</a>
+									<a href="previous-page" onclick="jsonChat(${response['page_number']||""}-1);
+										return false;" >previous</a>
+									<span class="current">
+										Page ${response['page_number']||""} of 
+											${response['num_of_pages']||""}
+									</span>
 								</span>
-							</span>
-							`
-						)
-					}
+								`
+							)
+						}
 					for (let i = instance.length-1; i >= 0; i--) {
 						var fields = instance[i];
 						var dateRaw = fields["date_posted"]; //Format Date and time
@@ -57,7 +57,7 @@
 						var dateTime =  tmp_time + " " + tmp_date;
 						if (fields["author_id"] == '{{ user.id }}') {
 							$("#showdata tbody").prepend(
-								`
+									`
 									<div class="col-sm-12" style="background-color:rgb(250, 249, 230);">
 										${fields["post_type"]||""}
 										${dateTime||""}
@@ -69,21 +69,21 @@
 										${fields["content"]||""}
 									</div>
 									<div></div>
-								`
+									`
 								)
 							} else {
 								$("#showdata tbody").prepend(
 									`
-										<div class="col-sm-12" style="background-color:rgb(250, 249, 230);">
-											${fields["post_type"]||""}
-											${dateTime||""}
-											<a class="mr-2" href="../${fields["id"]||""}/user_info/">
-											${fields["author_name"]||""}</a>
-										</div>
-										<div class="col-sm-12" style="background-color:rgb(230, 230, 250);">
-											${fields["content"]||""}
-										</div>
-										<div></div>
+									<div class="col-sm-12" style="background-color:rgb(250, 249, 230);">
+										${fields["post_type"]||""}
+										${dateTime||""}
+										<a class="mr-2" href="../${fields["id"]||""}/user_info/">
+										${fields["author_name"]||""}</a>
+									</div>
+									<div class="col-sm-12" style="background-color:rgb(230, 230, 250);">
+										${fields["content"]||""}
+									</div>
+									<div></div>
 									`
 								)
 							}
