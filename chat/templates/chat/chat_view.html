@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="jumbotron">
 		<script>
-			setTimeout(jsonChat, 500, 2);
+			setTimeout(jsonChat, 500, 1);
 			var sel_page;
 			function jsonChat(selected_page) {
 			sel_page = selected_page;
@@ -48,6 +48,26 @@
 								</span>
 								`
 							)
+						}else{
+							$("#pagination tbody").prepend(
+								`
+								<span class="step-links">
+									<a href="first-page" onclick="jsonChat(1);
+										return false;" >&laquo; first</a>
+									<a href="previous-page" onclick="jsonChat(${response['page_number']||""}-1);
+										return false;" >previous</a>
+									<span class="current">
+										Page ${response['page_number']||""} of 
+											${response['num_of_pages']||""}
+									</span>
+									<a href="next-page" onclick="jsonChat(${response['page_number']||""}+1);
+										return false;" >next</a>
+									<a href="last-page" onclick="jsonChat(${response['num_of_pages']||""});
+										return false;" >last &raquo;</a>
+								</span>
+								`
+							)
+
 						}
 					for (let i = instance.length-1; i >= 0; i--) {
 						var fields = instance[i];
