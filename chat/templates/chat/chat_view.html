@@ -1,6 +1,10 @@
 {% extends "chat/base.html" %}
 {% block content %}
-<div class="container">
+<script>
+    if (w > w_sw) {
+        document.write("<div class='container'>");
+    }
+</script>
 	<div class="jumbotron">
 		<script>
 			setTimeout(jsonChat, 500, 1);
@@ -145,5 +149,9 @@
         </div>	
 
 	</div>
-</div>
+<script>
+	if (w > w_sw) {
+		document.write("</div>");
+	}
+</script>
 {% endblock content %}
