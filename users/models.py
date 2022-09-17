@@ -16,6 +16,7 @@ class Profile(models.Model):
     user_level= models.PositiveIntegerField(default=10)
     list_rows= models.PositiveIntegerField(default=10)
     items_in_page= models.PositiveIntegerField(default=10)
+    messages_in_chat_page= models.PositiveIntegerField(default=10)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
     def __str__(self):
