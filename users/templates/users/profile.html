@@ -18,6 +18,9 @@
 						<label>Email:*</label><br>
 						{{ form.email }}
 						{{ form.email.errors }} <br><br>
+						<label>Email public:</label><br>
+						{{ p_form.email_public }}
+						{{ form.email.errors }} <br><br>
 						<label>First name:</label><br>
 						{{ form.first_name }}<br><br>
 						<label>Last name:</label><br>
@@ -33,6 +36,8 @@
 						{{ p_form.list_rows }}<br><br>
 						<label>Items in page(1-50):</label><br>
 						{{ p_form.items_in_page }}<br><br>
+						<label>Messages in chat page(1-50):</label><br>
+						{{ p_form.messages_in_chat_page }}<br><br>
 						<label>User level:</label><br>
 						{{ user_level }}<br><br>
 					</div>
