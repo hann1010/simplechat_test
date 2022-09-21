@@ -54,12 +54,6 @@ class Chat_View(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        items_in_page_int = self.request.user.profile.items_in_page
-        db_data = Chat_post.objects.all().order_by('-date_posted')
-        paginator = Paginator(db_data, items_in_page_int)
-        page_number = self.request.GET.get('page')
-        page_data = paginator.get_page(page_number)
-        context["chat_context"] = page_data
         context["title"] = 'chat'
         context["title_page"] = 'Chat'
         return context
