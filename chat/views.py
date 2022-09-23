@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-#from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.generic import (
     #ListView,
@@ -22,7 +22,8 @@ def home(request):
     return render(request, 'chat/index.html', dic_x)
 
 
-def jsonChat(request): #Test
+@login_required
+def jsonChat(request):
     data = Chat_post.objects.all().values().order_by('-date_posted')
     messages_in_chat_tmp = request.user.profile.messages_in_chat_page
     if messages_in_chat_tmp > 49:
@@ -44,7 +45,7 @@ def jsonChat(request): #Test
         'page_number' : page_number_fix,
         'page_range' : list(paginator.page_range)
     }
-    return JsonResponse( json_page, safe=False)
+    return JsonResponse(json_page, safe=False)
 
 
 class Chat_View(LoginRequiredMixin, CreateView):
