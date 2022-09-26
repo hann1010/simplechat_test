@@ -7,6 +7,7 @@
 </script>
 	<div class="jumbotron">
 		<script>
+			const chatDispTimer = setInterval(jsonChat, 5000, 1);
 			setTimeout(jsonChat, 500, 1);
 			var sel_page;
 			function jsonChat(selected_page) {
