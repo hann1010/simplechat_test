@@ -7,11 +7,13 @@
 </script>
 	<div class="jumbotron">
 		<script>
-			const chatDispTimer = setInterval(jsonChat, 5000, 1);
+			var chatDispTimer;
 			setTimeout(jsonChat, 500, 1);
-			var sel_page;
 			function jsonChat(selected_page) {
-			sel_page = selected_page;
+			if (selected_page == 1){
+				clearInterval(chatDispTimer);
+				chatDispTimer = setInterval(jsonChat, 5000, 1);
+			}
 			$.ajax({
 				method: 'POST',
 				url: 'chat_json/',
