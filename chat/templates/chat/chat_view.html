@@ -13,6 +13,8 @@
 			if (selected_page == 1){
 				clearInterval(chatDispTimer);
 				chatDispTimer = setInterval(jsonChat, 5000, 1);
+			} else {
+				clearInterval(chatDispTimer);
 			}
 			$.ajax({
 				method: 'POST',
