@@ -66,7 +66,7 @@
 				
 					for (let i = instance.length-1; i >= 0; i--) {
 						var fields = instance[i];
-						var dateRaw = fields["date_posted"]; //Format Date and time
+						var dateRaw = fields['date_posted']; //Format Date and time
 						var tmp_date = new Date(dateRaw).toJSON().slice(0,10).split('-').reverse().join(',');
 						var tmp_time = new Date(dateRaw).toJSON().slice(11,19);
 						var dateTime =  tmp_time + " " + tmp_date;
@@ -74,14 +74,14 @@
 							$("#showdata tbody").prepend(
 									`
 									<div class="col-sm-12" style="background-color:rgb(250, 249, 230);">
-										${fields["post_type"]||""}
+										${fields['post_type']||""}
 										${dateTime||""}
-										<a class="mr-2" href="../${fields["id"]||""}/user_info/">
-										${fields["author_name"]||""}</a>
-										<a class="mr-2" href="../${fields["id"]||""}/update/">Update</a>
+										<a class="mr-2" href="../${fields['id']||""}/user_info/">
+										${fields['author_name']||""}</a>
+										<a class="mr-2" href="../${fields['id']||""}/update/">Update</a>
 									</div>
 									<div class="col-sm-12" style="background-color:rgb(250, 230, 236);">
-										${fields["content"]||""}
+										${fields['content']||""}
 									</div>
 									<div></div>
 									`
@@ -90,13 +90,13 @@
 								$("#showdata tbody").prepend(
 									`
 									<div class="col-sm-12" style="background-color:rgb(250, 249, 230);">
-										${fields["post_type"]||""}
+										${fields['post_type']||""}
 										${dateTime||""}
-										<a class="mr-2" href="../${fields["id"]||""}/user_info/">
-										${fields["author_name"]||""}</a>
+										<a class="mr-2" href="../${fields['id']||""}/user_info/">
+										${fields['author_name']||""}</a>
 									</div>
 									<div class="col-sm-12" style="background-color:rgb(230, 230, 250);">
-										${fields["content"]||""}
+										${fields['content']||""}
 									</div>
 									<div></div>
 									`
