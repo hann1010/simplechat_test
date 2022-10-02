@@ -70,7 +70,7 @@
 						var tmp_date = new Date(dateRaw).toJSON().slice(0,10).split('-').reverse().join(',');
 						var tmp_time = new Date(dateRaw).toJSON().slice(11,19);
 						var dateTime =  tmp_time + " " + tmp_date;
-						if (fields["author_id"] == '{{ user.id }}') {
+						if (fields['author_id'] == '{{ user.id }}') {
 							$("#showdata tbody").prepend(
 									`
 									<div class="col-sm-12" style="background-color:rgb(250, 249, 230);">
