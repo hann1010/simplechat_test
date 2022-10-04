@@ -80,7 +80,8 @@
                 document.write("<li><a href='{% url 'profile' %}'><span class='glyphicon glyphicon-user'></span> {{user}}</a></li>");
               }
             </script>
-            <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            <li><a href="logoutConfirm" onclick="logoutConfirm();return false;
+              "><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             {% else %}
             <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
