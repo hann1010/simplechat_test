@@ -93,9 +93,8 @@
                 document.write("<li><a href='{% url 'profile' %}'><span class='glyphicon glyphicon-user'></span> {{user}}</a></li>");
               }
             </script>
-            <li><a href="logoutConfirm" onclick="logoutConfirm();return false;">
+            <li><a href='javascript:;' data-toggle="modal" data-target="#logOutModal">
               <span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-              <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
             {% else %}
             <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -105,7 +104,7 @@
       </nav>
     </header>
     <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
+    <div id="logOutModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
