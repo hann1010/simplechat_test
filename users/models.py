@@ -6,7 +6,7 @@ from PIL import Image
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    nickname = models.CharField(max_length=200, blank=True)
+    nickname = models.CharField(max_length=20, blank=True)
     club = models.CharField(max_length=200, blank=True)
     call = models.CharField(max_length=200, blank=True)
     qth = models.CharField(max_length=200, blank=True)
