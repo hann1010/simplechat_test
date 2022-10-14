@@ -21,8 +21,8 @@ class Profile(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
     def __str__(self):
-        return  str(self.user) + " / " + self.club +" / " \
-        + self.call + " / " + self.qth + " / " \
+        return  str(self.user) + " / " + self.nickname +" / " \
+        + self.address + " / " + self.town + " / " \
         + str(self.user_level)
 
     def save(self, *args, **kwargs):
