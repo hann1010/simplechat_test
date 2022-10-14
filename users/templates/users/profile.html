@@ -11,10 +11,9 @@
 				<p>Session Started at: {{ user.last_login |date:"H:i d, m, Y" }}</p>
 				<div class="row">
 					<div class="col-sm-3">
-						<label>Username:*</label><br>
-						{{ form.username }}
-						{{ form.username.help_text }}
-						{{ form.username.errors }} <br><br>
+						<label>Nickname:</label><br>
+						{{ p_form.nickname }}
+						{{ p_form.nickname.errors }} <br><br>
 						<label>Email:*</label><br>
 						{{ form.email }}
 						{{ form.email.errors }} <br><br>
