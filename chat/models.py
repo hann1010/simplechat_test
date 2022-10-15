@@ -1,9 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from users.models import Profile
 from ckeditor.fields import RichTextField
 
 class Chat_post(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     post_type = models.CharField(max_length=100, blank=True)
     origin_post_id= models.IntegerField(default=0)
     content = RichTextField(config_name='chat_config')
