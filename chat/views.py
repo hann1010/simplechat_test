@@ -52,6 +52,7 @@ def jsonProfile(request):
     json_profile = {}
     return JsonResponse(json_profile, safe=False)
 
+
 class Chat_View(LoginRequiredMixin, CreateView):
     model = Chat_post
     success_url = reverse_lazy('chat-view')
