@@ -43,7 +43,7 @@ def jsonChat(request):
         'chat_context' : list(page_data),
         'num_of_pages' : paginator.num_pages,
         'page_number' : page_number_fix,
-        'users_profile' : 'test'
+        'user_profile' : 'test'
     }
     return JsonResponse(json_page, safe=False)
 
