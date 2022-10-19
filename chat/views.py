@@ -39,11 +39,16 @@ def jsonChat(request):
     else:
         page_number_fix = page_number
     page_data = paginator.get_page(page_number)
+    temp_b = ''
+    for i in range(len(page_data)): # test
+        post_no = page_data[i]
+        temp_b += str(post_no['profile_id'])
+    temp_b += ' ' + str(len(temp_b))
     json_page = {
         'chat_context' : list(page_data),
         'num_of_pages' : paginator.num_pages,
         'page_number' : page_number_fix,
-        'user_profile' : 'test'
+        'user_profile' : temp_b #test
     }
     return JsonResponse(json_page, safe=False)
 
