@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Chat_post
+from django.contrib.auth.models import User
+from .models import Chat_post, Profile
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.urls import reverse_lazy
@@ -40,15 +41,20 @@ def jsonChat(request):
         page_number_fix = page_number
     page_data = paginator.get_page(page_number)
     temp_b = ''
+    temp_d = ''
     for i in range(len(page_data)): # test
         one_post = page_data[i]
-        temp_b += str(one_post['profile_id'])
+        temp_b += ' ' + str(one_post['profile_id'])
+        temp_b += ' ' + str(one_post['id'])
+        temp_b += ' ' + str(User.objects.get(pk=(one_post['author_id']))) #get user
+    temp_d = Profile.objects.values()
     temp_b += ' ' + str(len(temp_b))
     json_page = {
         'chat_context' : list(page_data),
         'num_of_pages' : paginator.num_pages,
         'page_number' : page_number_fix,
-        'user_profile' : temp_b #test
+        'user_profile' : list(temp_d),
+        'user_name' : {'info' :temp_b}
     }
     return JsonResponse(json_page, safe=False)
 
