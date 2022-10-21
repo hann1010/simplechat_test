@@ -5,6 +5,7 @@
         document.write("<div class='container'>");
     }
 </script>
+<div class="well"><h2>{{ title_page }} - {{ title }}</h2></div>
 	<div class="jumbotron">
 		<script>
 			var chatDispTimer;
@@ -110,8 +111,6 @@
 				})
 			};
 		</script>
-		
-		<h1>{{ title_page }}</h1>
 		<form method="POST">
 			{% csrf_token %}
 			<fieldset class="form-group">
