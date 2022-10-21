@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from psutil import users
 from .models import Chat_post, Profile
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -44,17 +45,21 @@ def jsonChat(request):
     temp_d = ''
     for i in range(len(page_data)): # test
         one_post = page_data[i]
-        temp_b += ' ' + str(one_post['profile_id'])
-        temp_b += ' ' + str(one_post['id'])
-        temp_b += ' ' + str(User.objects.get(pk=(one_post['author_id']))) #get user
-    temp_d = Profile.objects.values()
-    temp_b += ' ' + str(len(temp_b))
+        #temp_b += ' ' + str(one_post['profile_id'])
+        #temp_b +=  str(one_post['id'])
+        #temp_b = User.objects.get(pk=(one_post['author_id'])) #get user
+        #temp_d = Profile.objects.get(pk=(one_post['author_id']))
+        #temp_d = Profile.objects.values()#.get(pk=(one_post['author_id']))
+        #temp_b = User.objects.values('id', 'username').filter(pk=one_post['profile_id'])
+    profile_list = User.objects.values('id', 'username').filter(pk__in=[1, 2])
+    users_list = Profile.objects.values('id', 'nickname').filter(pk__in=[1, 2])
+    #temp_b += ' ' + str(len(temp_b))
     json_page = {
         'chat_context' : list(page_data),
         'num_of_pages' : paginator.num_pages,
         'page_number' : page_number_fix,
-        'user_profile' : list(temp_d),
-        'user_name' : {'info' :temp_b}
+        'user_profile' : list(profile_list),
+        'user_name' : list(users_list)
     }
     return JsonResponse(json_page, safe=False)
 
