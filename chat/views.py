@@ -51,15 +51,15 @@ def jsonChat(request):
         #temp_d = Profile.objects.get(pk=(one_post['author_id']))
         #temp_d = Profile.objects.values()#.get(pk=(one_post['author_id']))
         #temp_b = User.objects.values('id', 'username').filter(pk=one_post['profile_id'])
-    profile_list = User.objects.values('id', 'username').filter(pk__in=[1, 2])
-    users_list = Profile.objects.values('id', 'nickname').filter(pk__in=[1, 2])
+    user_s = User.objects.values('id', 'username').filter(pk__in=[1, 2])
+    users_profile = Profile.objects.values('id', 'nickname').filter(pk__in=[1, 2])
     #temp_b += ' ' + str(len(temp_b))
     json_page = {
         'chat_context' : list(page_data),
         'num_of_pages' : paginator.num_pages,
         'page_number' : page_number_fix,
-        'user_profile' : list(profile_list),
-        'user_name' : list(users_list)
+        'user_s' : list(user_s),
+        'user_profile' : list(users_profile)
     }
     return JsonResponse(json_page, safe=False)
 
