@@ -52,7 +52,7 @@ def jsonChat(request):
         #temp_d = Profile.objects.values()#.get(pk=(one_post['author_id']))
         #temp_b = User.objects.values('id', 'username').filter(pk=one_post['profile_id'])
     user_s = User.objects.values('id', 'username').filter(pk__in=[1, 2])
-    users_profile = Profile.objects.values('id', 'nickname').filter(pk__in=[1, 2])
+    users_profile = Profile.objects.values('user_id', 'nickname').filter(pk__in=[1, 2])
     #temp_b += ' ' + str(len(temp_b))
     json_page = {
         'chat_context' : list(page_data),
