@@ -44,7 +44,7 @@ def jsonChat(request):
     temp_b = ''
     temp_d = ''
     for i in range(len(page_data)): # test
-        one_post = page_data[i]
+        one_page = page_data[i]
         #temp_b += ' ' + str(one_post['profile_id'])
         #temp_b +=  str(one_post['id'])
         #temp_b = User.objects.get(pk=(one_post['author_id'])) #get user
