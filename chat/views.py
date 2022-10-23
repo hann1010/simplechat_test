@@ -43,8 +43,8 @@ def jsonChat(request):
     page_data = paginator.get_page(page_number)
     user_id_list = []
     for i in range(len(page_data)): # test
-        one_page_row = page_data[i]
-        user_id_list.append(one_page_row['author_id'])
+        one_chat_in_page = page_data[i]
+        user_id_list.append(one_chat_in_page['author_id'])
         #temp_b += ' ' + str(one_post['profile_id'])
         #temp_b +=  str(one_post['id'])
         #temp_b = User.objects.get(pk=(one_post['author_id'])) #get user
