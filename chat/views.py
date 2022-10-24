@@ -42,9 +42,11 @@ def jsonChat(request):
         page_number_fix = page_number
     page_data = paginator.get_page(page_number)
     user_id_list = []
+    profile_id_list = []
     for i in range(len(page_data)): # test
         one_chat_in_page = page_data[i]
         user_id_list.append(one_chat_in_page['author_id'])
+        profile_id_list.append(one_chat_in_page['profile_id'])
         #temp_b += ' ' + str(one_post['profile_id'])
         #temp_b +=  str(one_post['id'])
         #temp_b = User.objects.get(pk=(one_post['author_id'])) #get user
@@ -52,9 +54,10 @@ def jsonChat(request):
         #temp_d = Profile.objects.values()#.get(pk=(one_post['author_id']))
         #temp_b = User.objects.values('id', 'username').filter(pk=one_post['profile_id'])
     user_s = User.objects.values('id', 'username').filter(pk__in=user_id_list)
-    users_profile = Profile.objects.values('user_id', 'nickname').filter(pk__in=[1, 2])
+    users_profile = Profile.objects.values('user_id', 'nickname').filter(pk__in=profile_id_list)
     #temp_b += ' ' + str(len(temp_b))
-    print ('user_id_list', user_id_list) #debug 
+    print ('user_id_list', user_id_list) #debug
+    print ('profile_id_list', profile_id_list) #debug
     json_page = {
         'chat_context' : list(page_data),
         'num_of_pages' : paginator.num_pages,
