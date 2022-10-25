@@ -43,7 +43,7 @@ def jsonChat(request):
     page_data = paginator.get_page(page_number)
     user_id_list = []
     profile_id_list = []
-    for i in range(len(page_data)): # test
+    for i in range(len(page_data)):
         one_chat_in_page = page_data[i]
         user_id_list.append(one_chat_in_page['author_id'])
         profile_id_list.append(one_chat_in_page['profile_id'])
