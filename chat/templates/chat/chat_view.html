@@ -72,6 +72,7 @@
 						var tmp_date = new Date(dateRaw).toJSON().slice(0,10).split('-').reverse().join(',');
 						var tmp_time = new Date(dateRaw).toJSON().slice(11,19);
 						var dateTime =  tmp_time + " " + tmp_date;
+						var author_name = 'Test-test';
 						if (fields['author_id'] == '{{ user.id }}') {
 							$("#showdata tbody").prepend(
 									`
@@ -79,7 +80,7 @@
 										${fields['post_type']||""}
 										${dateTime||""}
 										<a class="mr-2" href="../${fields['id']||""}/user_info/">
-										${fields['author_name']||""}</a>
+										${author_name||""}</a>
 										<a class="mr-2" href="../${fields['id']||""}/update/">Update</a>
 									</div>
 									<div class="col-sm-12" style="background-color:rgb(250, 230, 236);">
@@ -95,7 +96,7 @@
 										${fields['post_type']||""}
 										${dateTime||""}
 										<a class="mr-2" href="../${fields['id']||""}/user_info/">
-										${fields['author_name']||""}</a>
+										${author_name||""}</a>
 									</div>
 									<div class="col-sm-12" style="background-color:rgb(230, 230, 250);">
 										${fields['content']||""}
