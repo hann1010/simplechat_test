@@ -65,7 +65,6 @@
 								`
 							)
 						}
-				
 					for (let i = instance_chat.length-1; i >= 0; i--) {
 						var fields = instance_chat[i];
 						var dateRaw = fields['date_posted']; //Format Date and time
@@ -73,9 +72,11 @@
 						var tmp_time = new Date(dateRaw).toJSON().slice(11,19);
 						var dateTime =  tmp_time + " " + tmp_date;
 						var author_name = 'Test-test';
-						var profile_id = fields['profile_id'];
 						for (let i = 0; i < instance_profile.length; i++) {
 							var fields_profile = instance_profile[i];
+							if (fields_profile['user_id'] == fields['profile_id']) {
+
+							}
 						}
 						if (fields['author_id'] == '{{ user.id }}') {
 							$("#showdata tbody").prepend(
