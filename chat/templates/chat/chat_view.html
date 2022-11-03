@@ -76,10 +76,10 @@
 						for (let i = 0; i < instance_profile.length; i++) {
 							var fields_profile = instance_profile[i];
 							if (fields_profile['user_id'] == fields['profile_id']) {
-								author_name = '|' + fields_profile['nickname']
+								author_name = fields_profile['nickname']
 							}
 						}
-						if (author_name == '|') {
+						if (!author_name.replace(/\s/g, '')) {
 							
 						}
 						if (fields['author_id'] == '{{ user.id }}') {
