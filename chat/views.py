@@ -68,8 +68,8 @@ class Chat_View(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = 'chat'
-        context["title_page"] = 'Chat'
+        context['title'] = 'chat'
+        context['title_page'] = 'Chat'
         return context
 
     def get_template_names(self):
@@ -94,8 +94,8 @@ class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user inform
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = 'user info'
-        context["title_page"] = 'User info'
+        context['title'] = 'user info'
+        context['title_page'] = 'User info'
         return context
 
 
@@ -106,8 +106,8 @@ class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = 'edit chat'
-        context["title_page"] = 'Edit chat'
+        context['title'] = 'edit chat'
+        context['title_page'] = 'Edit chat'
         return context
 
     def get_template_names(self):
@@ -138,8 +138,8 @@ class ChatDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = 'delete chat'
-        context["title_page"] = 'Delete chat'
+        context['title'] = 'delete chat'
+        context['title_page'] = 'Delete chat'
         return context
 
     def test_func(self):
