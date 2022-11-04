@@ -72,18 +72,19 @@
 						var tmp_date = new Date(dateRaw).toJSON().slice(0,10).split('-').reverse().join(',');
 						var tmp_time = new Date(dateRaw).toJSON().slice(11,19);
 						var dateTime =  tmp_time + " " + tmp_date;
-						var author_name;
+						var author_name; // Read nickname
 						for (let i = 0; i < instance_profile.length; i++) {
 							var fields_profile = instance_profile[i];
 							if (fields_profile['user_id'] == fields['profile_id']) {
-								author_name = fields_profile['nickname']
+								author_name = fields_profile['nickname'];
 							}
 						}
-						if (!author_name.replace(/\s/g, '')) {
+						if (!author_name.replace(/\s/g, '')) { // If no nickname read username
 							for (let i = 0; i < instance_users.length; i++) {
 								var fields_user = instance_users[i];
-								if (fields_user == fields['author_id']);
-								
+								if (fields_user['id'] == fields['author_id']) {
+									author_name = fields_user['username'];
+								}
 							}
 						}
 						if (fields['author_id'] == '{{ user.id }}') {
