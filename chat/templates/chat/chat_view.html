@@ -71,7 +71,7 @@
 						var dateRaw = fields['date_posted']; //Format Date and time
 						var tmp_date = new Date(dateRaw).toJSON().slice(0,10).split('-').reverse().join(',');
 						var tmp_time = new Date(dateRaw).toJSON().slice(11,19);
-						var dateTime =  tmp_time + " " + tmp_date;
+						var dateTime =  tmp_time + ' ' + tmp_date;
 						var author_name; // Read nickname
 						for (let i = 0; i < instance_profile.length; i++) {
 							var fields_profile = instance_profile[i];
