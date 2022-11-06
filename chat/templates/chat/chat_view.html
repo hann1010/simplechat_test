@@ -28,6 +28,7 @@
 					page : selected_page
 					},
 				success: function(response) {
+					//alert('{{MEDIA_URL}}')
 					var instance_chat = response['chat_context'];
 					var instance_profile = response['user_profile'];
 					var instance_users = response['user_s'];
@@ -72,6 +73,7 @@
 						var tmp_date = new Date(dateRaw).toJSON().slice(0,10).split('-').reverse().join(',');
 						var tmp_time = new Date(dateRaw).toJSON().slice(11,19);
 						var dateTime =  tmp_time + ' ' + tmp_date;
+						var author_image;
 						var author_name; // Read nickname
 						for (let i = 0; i < instance_profile.length; i++) {
 							var fields_profile = instance_profile[i];
