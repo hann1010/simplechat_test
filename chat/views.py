@@ -48,7 +48,7 @@ def jsonChat(request):
         user_id_list.append(one_chat_in_page['author_id'])
         profile_id_list.append(one_chat_in_page['profile_id'])
     user_s = User.objects.values('id', 'username').filter(pk__in=user_id_list)
-    users_profile = Profile.objects.values('user_id', 'nickname').filter(pk__in=profile_id_list)
+    users_profile = Profile.objects.values('user_id', 'nickname', 'image').filter(pk__in=profile_id_list)
     print ('user_id_list', user_id_list) #debug
     print ('profile_id_list', profile_id_list) #debug
     json_page = {
