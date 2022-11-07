@@ -79,6 +79,7 @@
 							var fields_profile = instance_profile[i];
 							if (fields_profile['user_id'] == fields['profile_id']) {
 								author_name = fields_profile['nickname'];
+								author_image = fields_profile['image']
 							}
 						}
 						if (!author_name.replace(/\s/g, '')) { // If no nickname read username
@@ -100,6 +101,8 @@
 										<a class="mr-2" href="../${fields['id']||""}/update/">Update</a>
 									</div>
 									<div class="col-sm-12" style="background-color:rgb(250, 230, 236);">
+										<img src="../..{{MEDIA_URL}}${author_image||""}" class="img-circle 
+											special-img" style="width:40px">
 										${fields['content']||""}
 									</div>
 									<div></div>
@@ -115,6 +118,8 @@
 										${author_name||""}</a>
 									</div>
 									<div class="col-sm-12" style="background-color:rgb(230, 230, 250);">
+										<img src="../..{{MEDIA_URL}}${author_image||""}" class="img-circle 
+											special-img" style="width:40px">
 										${fields['content']||""}
 									</div>
 									<div></div>
