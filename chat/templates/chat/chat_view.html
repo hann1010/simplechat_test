@@ -74,8 +74,8 @@
 						var tmp_time = new Date(dateRaw).toJSON().slice(11,19);
 						var dateTime =  tmp_time + ' ' + tmp_date;
 						var author_image;
-						var author_name; // Read nickname
-						for (let i = 0; i < instance_profile.length; i++) {
+						var author_name;
+						for (let i = 0; i < instance_profile.length; i++) { // Read nickname
 							var fields_profile = instance_profile[i];
 							if (fields_profile['user_id'] == fields['profile_id']) {
 								author_name = fields_profile['nickname'];
