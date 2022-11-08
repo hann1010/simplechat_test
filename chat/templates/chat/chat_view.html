@@ -137,10 +137,7 @@
 		<form method="POST">
 			{% csrf_token %}
 			<fieldset class="form-group">
-				<div class="well well-sm">
-					{{ form.media }} 
 					{{ form.as_p }}
-				</div>
 			</fieldset>
 			<div class="form-group">
 				<button class="btn btn-success btn-sm mt-1 mb-1" type="submit">Submit</button>

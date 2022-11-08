@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from psutil import users
 from .models import Chat_post, Profile
+from .forms import Chat_view_Form
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.urls import reverse_lazy
@@ -15,6 +16,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
+
 
 def home(request):
     dic_x = {
@@ -63,8 +65,9 @@ def jsonChat(request):
 
 class Chat_View(LoginRequiredMixin, CreateView):
     model = Chat_post
+    form_class = Chat_view_Form
     success_url = reverse_lazy('chat-view')
-    fields = ['content']
+    #fields = ['content']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
