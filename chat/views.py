@@ -69,6 +69,13 @@ class Chat_View(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('chat-view')
     #fields = ['content']
 
+    def get_initial(self):
+        super().get_initial()
+        self.initial = {
+            'content': '<p></p>',
+            }
+        return self.initial 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'chat'
