@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from psutil import users
 from .models import Chat_post, Profile
 from .forms import Chat_view_Form
 from django.contrib import messages
