@@ -134,11 +134,11 @@ CKEDITOR_CONFIGS = {
         'chat_config': {
             'toolbar': 'Custom',
             'width': '100%',
-            'height': '50px',
+            'height': '200px',
             'toolbar_Custom': [
                 ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
                 ['Bold', 'Italic', 'Underline', 'TextColor', 'BGColor'],
-                ['Textarea', 'Link', 'Unlink', 'Image'],
+                ['Textarea', 'RemoveFormat', 'Source', 'Link', 'Unlink', 'Image'],
                 ['Styles', 'Format', 'Font', 'FontSize'],
                 ['Smiley', 'SpecialChar'],
             ]

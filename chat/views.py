@@ -112,6 +112,7 @@ class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user inform
 class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Chat_post
     success_url = reverse_lazy('chat-view')
+    #form_class = Chat_view_Form
     fields = ['content']
 
     def get_context_data(self, **kwargs):
