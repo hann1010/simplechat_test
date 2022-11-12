@@ -71,7 +71,7 @@ class Chat_View(LoginRequiredMixin, CreateView):
     def get_initial(self):
         super().get_initial()
         self.initial = {
-            'content': '<p></p>',
+            'content': self.request.user.profile.initial_chat
             }
         return self.initial 
 
