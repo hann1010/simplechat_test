@@ -98,6 +98,42 @@ class Chat_View(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+class ChatCreateView(LoginRequiredMixin, CreateView):
+    model = Chat_post
+    form_class = Chat_view_Form
+    success_url = reverse_lazy('chat-view')
+    #fields = ['content']
+
+    def get_initial(self):
+        super().get_initial()
+        self.initial = {
+            'content': self.request.user.profile.initial_chat
+            }
+        return self.initial 
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'chat'
+        context['title_page'] = 'Chat'
+        return context
+
+    def get_template_names(self):
+        if  self.request.user.profile.user_level > 3:
+            template_name = 'chat/chat_view.html'
+        else:
+            template_name = 'chat/forbidden.html'
+        return template_name
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.profile_id = self.request.user.profile.id
+        form.instance.author_name = str(self.request.user)
+        form.instance.author_nickname = self.request.user.profile.nickname
+        form.instance.post_type = 'Chat'
+        messages.add_message(self.request, messages.INFO, 'Yours new message has been saved!')
+        return super().form_valid(form)
+
+
 class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user information
     model = Chat_post
     template_name = 'chat/user_info.html'
