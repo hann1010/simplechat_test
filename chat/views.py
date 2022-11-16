@@ -77,7 +77,7 @@ class Chat_View(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'chat'
+        context['title'] = 'view'
         context['title_page'] = 'Chat'
         return context
 
@@ -113,13 +113,13 @@ class ChatCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'chat'
-        context['title_page'] = 'Chat'
+        context['title'] = 'new'
+        context['title_page'] = 'New chat'
         return context
 
     def get_template_names(self):
         if  self.request.user.profile.user_level > 3:
-            template_name = 'chat/chat_view.html'
+            template_name = 'chat/chat_new.html'
         else:
             template_name = 'chat/forbidden.html'
         return template_name
@@ -153,7 +153,7 @@ class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'edit chat'
+        context['title'] = 'edit'
         context['title_page'] = 'Edit chat'
         return context
 
