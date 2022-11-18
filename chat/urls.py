@@ -10,8 +10,7 @@ from .views import (
     ChatUpdateView,
     ChatDeleteView,
     UserDetailView
-    
-)
+    )
 
 
 urlpatterns = [
@@ -22,4 +21,4 @@ urlpatterns = [
     path('chat/<int:pk>/update/', ChatUpdateView.as_view(), name='chat_update'),
     path('chat/<int:pk>/delete/', ChatDeleteView.as_view(), name='chat_delete'),
     path('chat/<int:pk>/user_info/', UserDetailView.as_view(), name='chat-user_info'),
-]
+    ]
