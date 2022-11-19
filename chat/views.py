@@ -134,6 +134,12 @@ class ChatCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+class ChatCommentCreateView(LoginRequiredMixin, CreateView):
+    model = Chat_post
+    success_url = reverse_lazy('chat-view')
+    fields = ['content']
+
+
 class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user information
     model = Chat_post
     template_name = 'chat/user_info.html'
