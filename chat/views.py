@@ -139,6 +139,12 @@ class ChatCommentCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('chat-view')
     fields = ['content']
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["topic_context"] = Chat_post.objects.all().values().get(pk=self.kwargs.get('pk'))
+        context["title"] = 'comment'
+        context['title_page'] = 'New comment' 
+        return context
 
 class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user information
     model = Chat_post
