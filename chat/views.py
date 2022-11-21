@@ -146,6 +146,14 @@ class ChatCommentCreateView(LoginRequiredMixin, CreateView):
         context['title_page'] = 'New comment' 
         return context
 
+    def get_template_names(self):
+        if  self.request.user.profile.user_level > 3:
+            template_name = 'chat/chat_new_comment.html'
+        else:
+            template_name = 'chat/forbidden.html'
+        return template_name
+
+
 class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user information
     model = Chat_post
     template_name = 'chat/user_info.html'
