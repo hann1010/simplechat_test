@@ -153,6 +153,19 @@ class ChatCommentCreateView(LoginRequiredMixin, CreateView):
             template_name = 'chat/forbidden.html'
         return template_name
 
+    def form_valid(self, form):
+        db_data = Chat_post.objects.all().values().get(pk=self.kwargs.get('pk'))
+        form.instance.author = self.request.user
+        form.instance.post_type = 'Comment'
+        #form.instance.title = 'Re: ' + db_data['title']
+        if db_data['origin_post_id'] == 0:
+            form.instance.origin_post_id = db_data['id']
+        else:
+            form.instance.origin_post_id = db_data['origin_post_id']
+        info = 'Yours new comment has been saved!'
+        messages.add_message(self.request, messages.INFO, info)
+        return super().form_valid(form)
+
 
 class UserDetailView(LoginRequiredMixin, DetailView): #Show selected user information
     model = Chat_post
