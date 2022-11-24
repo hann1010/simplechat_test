@@ -9,11 +9,10 @@
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">{{ title_page }}</legend>
+                <h1>{{ title_page }}</h1>
+                <br>
                 <div class="well">
-                    <div class="well">
                         {{ topic_context.content | safe }}
-                    </div>
                 </div>
                 {{ form.media }}
                 {{ form.as_p }}
