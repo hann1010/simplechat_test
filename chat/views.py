@@ -156,6 +156,7 @@ class ChatCommentCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         db_data = Chat_post.objects.all().values().get(pk=self.kwargs.get('pk'))
         form.instance.author = self.request.user
+        form.instance.profile_id = self.request.user.profile.id
         form.instance.post_type = 'Comment'
         #form.instance.title = 'Re: ' + db_data['title']
         if db_data['origin_post_id'] == 0:
