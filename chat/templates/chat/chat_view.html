@@ -9,6 +9,7 @@
 	<div class="jumbotron">
 		<script>
 			var chatDispTimer;
+			var thread_Id; // test
 			setTimeout(jsonChat, 500, 1);
 			function jsonChat(selected_page) {
 			if (selected_page == 1) {
@@ -25,7 +26,8 @@
 				dataType: 'json',        
 				data: {
 					csrfmiddlewaretoken : '{{ csrf_token }}',
-					page : selected_page
+					page : selected_page,
+					thread_Id : thread_Id // test
 					},
 				success: function(response) {
 					//alert('{{MEDIA_URL}}')
