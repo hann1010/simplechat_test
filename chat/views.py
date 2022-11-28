@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from .models import Chat_post, Profile
 from .forms import Chat_view_Form
+from django.db.models import Q
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.urls import reverse_lazy
@@ -27,7 +28,11 @@ def home(request):
 
 @login_required
 def jsonChat(request):
-    data = Chat_post.objects.all().values().order_by('-date_posted')
+    post_id = 0 #test
+    if post_id == 0:
+        data = Chat_post.objects.all().values().order_by('-date_posted')
+    else:
+        data = Chat_post.objects.values().filter(Q(id = post_id) | Q(origin_post_id = post_id)).order_by('date_posted')
     messages_in_chat_tmp = request.user.profile.messages_in_chat_page
     if messages_in_chat_tmp > 49:
         messages_in_chat_int = 50
