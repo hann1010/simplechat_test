@@ -1,3 +1,4 @@
+from concurrent.futures import thread
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from .models import Chat_post, Profile
@@ -28,11 +29,15 @@ def home(request):
 
 @login_required
 def jsonChat(request):
-    post_id = 0 #test
+    thread_id = request.POST.get('thread_Id')
+    if thread_id == None:
+        post_id = 0
+    else:
+        post_id = thread_id
     if post_id == 0:
         data = Chat_post.objects.all().values().order_by('-date_posted')
     else:
-        data = Chat_post.objects.values().filter(Q(id = post_id) | Q(origin_post_id = post_id)).order_by('date_posted')
+        data = Chat_post.objects.values().filter(Q(id = post_id) | Q(origin_post_id = post_id)).order_by('-date_posted')
     messages_in_chat_tmp = request.user.profile.messages_in_chat_page
     if messages_in_chat_tmp > 49:
         messages_in_chat_int = 50
