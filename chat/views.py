@@ -29,12 +29,8 @@ def home(request):
 
 @login_required
 def jsonChat(request):
-    thread_id = request.POST.get('thread_Id')
-    if thread_id == None:
-        post_id = 0
-    else:
-        post_id = thread_id
-    if post_id == 0:
+    post_id = request.POST.get('thread_Id')
+    if post_id == None or 0:
         data = Chat_post.objects.all().values().order_by('-date_posted')
     else:
         data = Chat_post.objects.values().filter(Q(id = post_id) | Q(origin_post_id = post_id)).order_by('-date_posted')
