@@ -12,6 +12,7 @@
 			var thread_Id = 0; // test
 			function toThread() { // test
 				thread_Id = 10;
+				jsonChat(1);
 			}
 			setTimeout(jsonChat, 500, 1);
 			function jsonChat(selected_page) {
@@ -105,6 +106,7 @@
 										${author_name||""}</a>
 										<a class="mr-2" href="../${fields['id']||""}/update/">Update</a>
 										<a class="mr-2" href="../${fields['id']||""}/comment/">Comment</a>
+										<a class="mr-2" href="toThread" onclick="toThread(); return false;">Thread</a>
 									</div>
 									<div class="col-sm-12" style="background-color:rgb(250, 230, 236);">
 										<img src="../..{{MEDIA_URL}}${author_image||""}" class="img-circle 
