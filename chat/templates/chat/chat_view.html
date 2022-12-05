@@ -10,8 +10,8 @@
 		<script>
 			var chatDispTimer;
 			var thread_Id = 0; // test
-			function toThread() { // test
-				thread_Id = 10;
+			function toThread(msg_ID) { // test
+				thread_Id = msg_ID;
 				jsonChat(1);
 			}
 			setTimeout(jsonChat, 500, 1);
@@ -34,7 +34,6 @@
 					thread_Id : thread_Id // test
 					},
 				success: function(response) {
-					//alert('{{MEDIA_URL}}')
 					var instance_chat = response['chat_context'];
 					var instance_profile = response['user_profile'];
 					var instance_users = response['user_s'];
@@ -106,7 +105,7 @@
 										${author_name||""}</a>
 										<a class="mr-2" href="../${fields['id']||""}/update/">Update</a>
 										<a class="mr-2" href="../${fields['id']||""}/comment/">Comment</a>
-										<a class="mr-2" href="toThread" onclick="toThread(); return false;">Thread</a>
+										<a class="mr-2" href="toThread" onclick="toThread(${fields['id']||""}); return false;">Thread</a>
 									</div>
 									<div class="col-sm-12" style="background-color:rgb(250, 230, 236);">
 										<img src="../..{{MEDIA_URL}}${author_image||""}" class="img-circle 
