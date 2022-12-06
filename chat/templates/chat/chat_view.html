@@ -10,9 +10,8 @@
 		<script>
 			var chatDispTimer;
 			var thread_Id = 0; // test
-			function toThread(msg_tmp_ID) { // test
-				//alert(msg_tmp_ID); //debug
-				thread_Id = msg_tmp_ID;
+			function toThread(msg_ID) { // test
+				thread_Id = msg_ID;
 				jsonChat(1);
 			}
 			setTimeout(jsonChat, 500, 1);
@@ -96,11 +95,11 @@
 								}
 							}
 						}
-						let msg_tmp_ID = 0;
+						let msg_ID = 0; // Get msg ID for thread
 						if (fields['origin_post_id'] == 0) {
-							msg_tmp_ID = fields['id'];
+							msg_ID = fields['id'];
 						} else {
-							msg_tmp_ID = fields['origin_post_id'];
+							msg_ID = fields['origin_post_id'];
 						}
 						if (fields['author_id'] == '{{ user.id }}') {
 
@@ -113,7 +112,7 @@
 										${author_name||""}</a>
 										<a class="mr-2" href="../${fields['id']||""}/update/">Update</a>
 										<a class="mr-2" href="../${fields['id']||""}/comment/">Comment</a>
-										<a class="mr-2" href="toThread" onclick="toThread(${msg_tmp_ID||""});
+										<a class="mr-2" href="toThread" onclick="toThread(${msg_ID||""});
 										 return false;">Thread</a>
 									</div>
 									<div class="col-sm-12" style="background-color:rgb(250, 230, 236);">
