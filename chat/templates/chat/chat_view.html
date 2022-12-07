@@ -9,8 +9,8 @@
 	<div class="jumbotron">
 		<script>
 			var chatDispTimer;
-			var thread_Id = 0; // test
-			function toThread(msg_ID) { // test
+			var thread_Id = 0;
+			function toThread(msg_ID) {
 				thread_Id = msg_ID;
 				jsonChat(1);
 			}
@@ -132,6 +132,9 @@
 										<a class="mr-2" href="../${fields['id']||""}/user_info/">
 										${author_name||""}</a>
 										<a class="mr-2" href="../${fields['id']||""}/comment/">Comment</a>
+										<a class="mr-2" href="../${fields['id']||""}/comment/">Comment</a>
+										<a class="mr-2" href="toThread" onclick="toThread(${msg_ID||""});
+										 return false;">Thread</a>
 									</div>
 									<div class="col-sm-12" style="background-color:rgb(230, 230, 250);">
 										<img src="../..{{MEDIA_URL}}${author_image||""}" class="img-circle 
