@@ -210,6 +210,7 @@ class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def form_valid(self, form):
         db_data = Chat_post.objects.all().values().get(pk=self.kwargs.get('pk'))
+        origin_post_id = db_data['origin_post_id']
         form.instance.author = self.request.user
         #form.instance.author_name = str(self.request.user)
         form.instance.post_type = 'Text[edit]'
