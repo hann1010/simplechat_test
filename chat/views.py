@@ -215,6 +215,8 @@ class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         #form.instance.author_name = str(self.request.user)
         if origin_post_id == 0:
             form.instance.post_type = 'Chat[edit]'
+        else:
+            form.instance.post_type = 'Comment[edit]'
         info = 'Your chat has been updated!'
         messages.add_message(self.request, messages.INFO, info)
         return super().form_valid(form)
