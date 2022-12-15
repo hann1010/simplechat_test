@@ -16,7 +16,7 @@ from django.views.generic import (
     CreateView,
     UpdateView,
     DeleteView,
-)
+    )
 
 
 def home(request):
@@ -168,7 +168,6 @@ class ChatCommentCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         form.instance.profile_id = self.request.user.profile.id
         form.instance.post_type = 'Comment'
-        #form.instance.title = 'Re: ' + db_data['title']
         if db_data['origin_post_id'] == 0:
             form.instance.origin_post_id = db_data['id']
         else:
@@ -212,7 +211,6 @@ class ChatUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         db_data = Chat_post.objects.all().values().get(pk=self.kwargs.get('pk'))
         origin_post_id = db_data['origin_post_id']
         form.instance.author = self.request.user
-        #form.instance.author_name = str(self.request.user)
         if origin_post_id == 0:
             form.instance.post_type = 'Chat[edit]'
         else:

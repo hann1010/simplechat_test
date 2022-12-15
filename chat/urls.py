@@ -2,10 +2,6 @@ from . import views
 from django.urls import path
 from .views import (
     Chat_View,
-    #AllDetailView,
-    #ThreadDetailView,
-    #TopicCreateView,
-    #CommentCreateView,
     ChatCreateView,
     ChatUpdateView,
     ChatCommentCreateView,
