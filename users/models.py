@@ -16,6 +16,7 @@ class Profile(models.Model):
     town = models.CharField(max_length=200, blank=True)
     country = models.CharField(max_length=200, blank=True)
     initial_chat = models.CharField(max_length=200, default='<p></p>')
+    beep_sound = models.BooleanField(default=False)
     user_level= models.PositiveIntegerField(default=10)
     list_rows= models.PositiveIntegerField(default=10)
     items_in_page= models.PositiveIntegerField(default=10)
